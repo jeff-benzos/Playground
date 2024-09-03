@@ -201,6 +201,16 @@ int findMax(int start, vector<int>& arr)
     return std::max(max, findMax(start + 1, arr));
 }
 
+void partition()
+{
+    
+}
+
+void quicksort(vector<int> arr)
+{
+    
+}
+
 void patterns()
 {
     rectangularStar(5);
