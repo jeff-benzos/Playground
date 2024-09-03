@@ -159,21 +159,117 @@ void mirroredCenteredPyramid(int n)
     }
 }
 
-void mirroredRightAngledTriangle()
+void mirroredRightAngledTriangle(int n)
 {
-    for (int i = 0; i < 5; ++i)
+    for (int i = 0; i < 2 * n - 1; ++i)
+    {
+        if (i < n)
+        {
+            for (int j = 0; j < i + 1; ++j)
+            {
+                cout << "*";
+            }
+            cout << endl;
+        }
+        else
+        {
+            for (int j = 0; j < 2 * n - 1 - i; ++j)
+            {
+                cout << "*";
+            }
+            cout << endl;
+        }
+    }
+}
+
+void rightAngledTriangleBinary(int n)
+{
+    for (int i = 0; i < n; ++i)
     {
         for (int j = 0; j < i + 1; ++j)
         {
-            cout << "*";
+            // i even, j even
+            if (i % 2 == 0 && j % 2 == 0) cout << '1' << ' ';
+                // i even, j odd
+            else if (i % 2 == 0 && j % 2 != 0) cout << '0' << ' ';
+                // i odd, j even
+            else if (i % 2 != 0 && j % 2 == 0) cout << '0' << ' ';
+                // i odd, j odd
+            else if (i % 2 != 0 && j % 2 != 0) cout << '1' << ' ';
         }
         cout << endl;
     }
-    for (int i = 3; i >= 0; --i)
+}
+
+void vShape(int n)
+{
+    for (int i = 0; i < n; ++i)
+    {
+        for (int j = 0; j < 2 * n; ++j)
+        {
+            if (j < i + 1)
+            {
+                cout << j + 1;
+            }
+            else if (j >=  2 * n - i - 1)
+            {
+                cout << 2 * n - j;
+            }else
+            {
+                cout << ' ';
+            }
+        }
+
+        cout << endl;
+    }
+}
+
+void rightAngledTriangleDecimal(int n)
+{
+    int num = 1;
+    for (int i = 0; i < n; ++i)
     {
         for (int j = 0; j < i + 1; ++j)
         {
-            cout << "*";
+            cout << num++ << ' ';
+        }
+        cout << endl;
+    }
+}
+
+void rightAngledTriangleLetters(int n)
+{
+    for (int i = 0; i < n; ++i)
+    {
+        for (int j = 0; j < i + 1; ++j)
+        {
+            cout << static_cast<char>('A' + j);
+        }
+        cout << endl;
+    }
+}
+
+void rightAngledTriangleLettersReverse(int n)
+{
+    for (int i = n; i > 0; --i)
+    {
+        for (int j = 0; j < i ; ++j)
+        {
+            cout << static_cast<char>('A' + j);
+        }
+        cout << endl;
+    }
+}
+
+
+
+void rightAngledTriangleLettersReverse(int n)
+{
+    for (int i = n; i > 0; --i)
+    {
+        for (int j = 0; j < i; ++j)
+        {
+            cout << static_cast<char>('A' + j);
         }
         cout << endl;
     }
@@ -203,12 +299,10 @@ int findMax(int start, vector<int>& arr)
 
 void partition()
 {
-    
 }
 
 void quicksort(vector<int> arr)
 {
-    
 }
 
 void patterns()
@@ -231,15 +325,23 @@ void patterns()
     space();
     mirroredCenteredPyramid(5);
     space();
-    //mirroredRightAngledTriangle();
+    mirroredRightAngledTriangle(5);
+    space();
+    rightAngledTriangleBinary(5);
+    space();
+    vShape(5);
+    space();
+    rightAngledTriangleDecimal(5);
+    space();
+    rightAngledTriangleLetters(5);
+    space();
+    rightAngledTriangleLettersReverse(5);
+    space();
 }
 
 int main()
 {
-    vector<int> arr{ 1,2,6,4,5,3 };
-    std::cout << sum(0, arr)<< endl;
-    std::cout << countElements(0, arr)<< endl;
-    std::cout << findMax(0, arr)<< endl;
+    patterns();
     getchar();
     return 0;
 }
