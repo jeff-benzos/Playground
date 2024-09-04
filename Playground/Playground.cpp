@@ -263,14 +263,58 @@ void rightAngledTriangleLettersReverse(int n)
 
 
 
-void rightAngledTriangleLettersReverse(int n)
+void rightAngledTriangleSingleLetterRows(int n)
 {
-    for (int i = n; i > 0; --i)
+    int modifier = 0;
+    for (int i = 0; i < n; ++i)
     {
-        for (int j = 0; j < i; ++j)
+        for (int j = 0; j < i + 1; ++j)
         {
-            cout << static_cast<char>('A' + j);
+            cout << static_cast<char>('A' + modifier);
         }
+        ++modifier;
+        cout << endl;
+    }
+}
+
+void centeredLetterPyramid(int n)
+{
+    for (int i = 0; i < n; ++i)
+    {
+        int modifier = 0;
+        for (int j = 0; j < 2 * n - 1; ++j)
+        {
+            if (j >= (2 * n - 1) / 2 - i && j <= (2 * n - 1) / 2 + i)
+            {
+                cout << static_cast<char>('A' + modifier);
+                if (j < n - 1)
+                {
+                    ++modifier;
+                }else
+                {
+                    --modifier;
+                }
+            }
+            else
+            {
+                cout << " ";
+            }
+        }
+        cout << endl;
+    }
+}
+
+void rightAngledTriangleLettersStartWithE(int n)
+{
+    --n;
+    for (int i = 0; i < n; ++i)
+    {
+        for (int j = 0; j < i + 1; ++j)
+        {
+            cout << static_cast<char>('A' + n - j);
+        }
+
+
         cout << endl;
     }
 }
@@ -336,6 +380,13 @@ void patterns()
     rightAngledTriangleLetters(5);
     space();
     rightAngledTriangleLettersReverse(5);
+    space();
+    rightAngledTriangleSingleLetterRows(5);
+    space();
+    centeredLetterPyramid(5);
+    space();
+
+    space();
     space();
 }
 
